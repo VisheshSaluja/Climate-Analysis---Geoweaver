@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 import joblib
+import matplotlib.pyplot as plt
 
 # Step 1: Load the dataset
 file_path = '/Users/vishesh/Desktop/geo_project/data.csv'
@@ -44,3 +45,16 @@ X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
 np.savez('preprocessed_data.npz', X_train=X_train, X_test=X_test, y_train=y_train, y_test=y_test)
 
 print("Data preprocessing completed and saved!")
+
+
+
+
+
+plt.figure(figsize=(10,6))
+plt.plot(data['Date'], data['Value'], label='Temperature Values')
+plt.title('Temperature Values Over Time')
+plt.xlabel('Date')
+plt.ylabel('Temperature (Degrees Fahrenheit)')
+plt.grid(True)
+plt.legend()
+plt.show()

@@ -47,19 +47,19 @@ import matplotlib.pyplot as plt
 import joblib
 
 # Step 1: Load predictions, actual values, and scaler
-predictions = np.load('/Users/vishesh/gw-workspace/9I3eI9y6wb9B/predictions.npy')
-data = np.load('/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz')
+predictions = np.load('add path to predictions .npy file')
+data = np.load('add path to .npz file')
 y_test = data['y_test']
 
 # Load the scaler for inverse transformation
-scaler = joblib.load('/Users/vishesh/gw-workspace/f7bNu3SQ6blN/scaler.pkl')
+scaler = joblib.load('add path to/scaler.pkl')
 
 # Step 2: Inverse scale the predictions and real values
 predicted_values = scaler.inverse_transform(predictions)
 real_values = scaler.inverse_transform(y_test.reshape(-1, 1))
 
 # Step 3: Visualize the loss over epochs
-history = np.load('/Users/vishesh/gw-workspace/9I3eI9y6wb9B/training_history.npy', allow_pickle=True).item()
+history = np.load('add path to/training_history.npy', allow_pickle=True).item()
 plt.plot(history['loss'], label='Train Loss')
 plt.plot(history['val_loss'], label='Validation Loss')
 plt.title('Model Loss over Epochs')

@@ -6,7 +6,7 @@ import joblib
 import matplotlib.pyplot as plt
 
 # Step 1: Load the dataset
-file_path = '/Users/vishesh/Desktop/geo_project/data.csv'
+file_path = 'add path to data .csv file'
 data = pd.read_csv(file_path, skiprows=3)
 
 # Step 2: Preprocess the data

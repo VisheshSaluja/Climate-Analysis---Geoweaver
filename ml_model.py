@@ -155,7 +155,7 @@ from tensorflow.keras.layers import LSTM, Dense, Dropout
 import joblib
 
 # Step 1: Load the preprocessed data
-data = np.load('/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz')
+data = np.load('add path to .npz file')
 X_train, X_test, y_train, y_test = data['X_train'], data['X_test'], data['y_train'], data['y_test']
 
 # Step 2: Build the LSTM model

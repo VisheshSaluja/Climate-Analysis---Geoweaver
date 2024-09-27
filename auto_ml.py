@@ -9,7 +9,7 @@ from tensorflow.keras.optimizers import Adam
 from pytorch_tabnet.tab_model import TabNetRegressor
 
 # Load preprocessed data
-data_path = '/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz'
+data_path = 'add path to .npz file'
 data = np.load(data_path)
 
 # List all variable names in the .npz file to identify contents

@@ -1,0 +1,121 @@
+[{
+  "history_id" : "yhusi3yr1fa",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727470464369,
+  "history_end_time" : 1727470464369,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "ot6lro7jor1",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697339,
+  "history_end_time" : 1727468697339,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "kyveto8k0vf",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468653305,
+  "history_end_time" : 1727468653305,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "zwpts2jcf7e",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468615933,
+  "history_end_time" : 1727468615933,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "akwdexaht0m",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468502538,
+  "history_end_time" : 1727468502538,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "9kadxjtwpuc",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468367400,
+  "history_end_time" : 1727468367400,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "xnutsupbudc",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468327009,
+  "history_end_time" : 1727468327009,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "dfneu1r599s",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468284964,
+  "history_end_time" : 1727468284964,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "0f6ijofvoej",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468233383,
+  "history_end_time" : 1727468233383,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "Dr8jcw9N1JqN",
+  "history_input" : "import pandas as pd\nfrom sklearn.cluster import KMeans\nfrom sklearn.preprocessing import StandardScaler\n\ndef detect_anomalies(file_name, n_clusters=3):\n    data = pd.read_csv(file_name)\n\n     # Print column names to inspect\n    print(\"Columns in the dataset:\", data.columns)\n    \n    # Rename columns if necessary (e.g., numerical column names)\n    if '50.33' in data.columns and '27.53' in data.columns:\n        data.rename(columns={'50.33': 'Temp_Value', '27.53': 'Precipitation'}, inplace=True)\n    \n    \n    # Use temperature and precipitation for clustering\n    features = data[['Temp_Value', 'Precipitation']].dropna()  # Remove missing data if present\n    \n    # Standardize the features\n    scaler = StandardScaler()\n    scaled_features = scaler.fit_transform(features)\n    \n    # Perform K-Means clustering\n    kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(scaled_features)\n    \n    # Add the cluster labels to the original data\n    data.loc[features.index, 'Cluster'] = kmeans.labels_  # Ensure only rows without NaNs get labels\n    \n    # Save the data with cluster labels\n    data.to_csv('/Users/vishesh/Desktop/geo_project/anomaly_detected_data.csv', index=False)\n    print(f\"Anomaly detection complete. Data saved as anomaly_detected_data.csv with {n_clusters} clusters.\")\n\nif __name__ == \"__main__\":\n    detect_anomalies('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv', n_clusters=3)\n\n",
+  "history_output" : "Columns in the dataset: Index(['Year', '50.33', '27.53'], dtype='object')\n/opt/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning\n  warnings.warn(\nAnomaly detection complete. Data saved as anomaly_detected_data.csv with 3 clusters.\n",
+  "history_begin_time" : 1727202101956,
+  "history_end_time" : 1727202103691,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "6XecNknocx88",
+  "history_input" : "import pandas as pd\nfrom sklearn.cluster import KMeans\nfrom sklearn.preprocessing import StandardScaler\n\ndef detect_anomalies(file_name, n_clusters=3):\n    data = pd.read_csv(file_name)\n    \n    # Use temperature and precipitation for clustering\n    features = data[['Temp_Value', 'Precipitation']].dropna()  # Remove missing data if present\n    \n    # Standardize the features\n    scaler = StandardScaler()\n    scaled_features = scaler.fit_transform(features)\n    \n    # Perform K-Means clustering\n    kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(scaled_features)\n    \n    # Add the cluster labels to the original data\n    data.loc[features.index, 'Cluster'] = kmeans.labels_  # Ensure only rows without NaNs get labels\n    \n    # Save the data with cluster labels\n    data.to_csv('/Users/vishesh/Desktop/geo_project/anomaly_detected_data.csv', index=False)\n    print(f\"Anomaly detection complete. Data saved as anomaly_detected_data.csv with {n_clusters} clusters.\")\n\nif __name__ == \"__main__\":\n    detect_anomalies('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv', n_clusters=3)\n\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/Users/vishesh/gw-workspace/6XecNknocx88/anomaly_detection.py\", line 26, in <module>\n    detect_anomalies('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv', n_clusters=3)\n  File \"/Users/vishesh/gw-workspace/6XecNknocx88/anomaly_detection.py\", line 9, in detect_anomalies\n    features = data[['Temp_Value', 'Precipitation']].dropna()  # Remove missing data if present\n               ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/frame.py\", line 3899, in __getitem__\n    indexer = self.columns._get_indexer_strict(key, \"columns\")[1]\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/base.py\", line 6115, in _get_indexer_strict\n    self._raise_if_missing(keyarr, indexer, axis_name)\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/base.py\", line 6176, in _raise_if_missing\n    raise KeyError(f\"None of [{key}] are in the [{axis_name}]\")\nKeyError: \"None of [Index(['Temp_Value', 'Precipitation'], dtype='object')] are in the [columns]\"\n",
+  "history_begin_time" : 1727202042386,
+  "history_end_time" : 1727202043729,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "tJftUPmYEfyY",
+  "history_input" : "import pandas as pd\nfrom sklearn.cluster import KMeans\n\ndef detect_anomalies(file_name):\n    data = pd.read_csv(file_name)\n    \n    # Use temperature and precipitation for clustering\n    features = data[['Temp_Value', 'Precipitation']]\n    \n    # Perform K-Means clustering\n    kmeans = KMeans(n_clusters=3, random_state=0).fit(features)\n    data['Cluster'] = kmeans.labels_\n    \n    # Save the data with cluster labels\n    data.to_csv('anomaly_detected_data.csv', index=False)\n    print(\"Anomaly detection complete. Data saved as anomaly_detected_data.csv\")\n\nif __name__ == \"__main__\":\n    detect_anomalies('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv')\n\n\n\n    \n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/Users/vishesh/gw-workspace/tJftUPmYEfyY/anomaly_detection.py\", line 19, in <module>\n    detect_anomalies('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv')\n  File \"/Users/vishesh/gw-workspace/tJftUPmYEfyY/anomaly_detection.py\", line 8, in detect_anomalies\n    features = data[['Temp_Value', 'Precipitation']]\n               ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/frame.py\", line 3899, in __getitem__\n    indexer = self.columns._get_indexer_strict(key, \"columns\")[1]\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/base.py\", line 6115, in _get_indexer_strict\n    self._raise_if_missing(keyarr, indexer, axis_name)\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/base.py\", line 6176, in _raise_if_missing\n    raise KeyError(f\"None of [{key}] are in the [{axis_name}]\")\nKeyError: \"None of [Index(['Temp_Value', 'Precipitation'], dtype='object')] are in the [columns]\"\n",
+  "history_begin_time" : 1727201813229,
+  "history_end_time" : 1727201815790,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : null,
+  "indicator" : "Failed"
+},]

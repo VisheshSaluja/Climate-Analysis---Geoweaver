@@ -1,0 +1,41 @@
+[{
+  "history_id" : "2myy9ystw73",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011527888,
+  "history_end_time" : 1728011527888,
+  "history_notes" : null,
+  "history_process" : "0lsb3i",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "3ck2urqzz42",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011268919,
+  "history_end_time" : 1728011268919,
+  "history_notes" : null,
+  "history_process" : "0lsb3i",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "u8xm4dbfvp3",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727715414206,
+  "history_end_time" : 1727715414206,
+  "history_notes" : null,
+  "history_process" : "0lsb3i",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "AHGohrgdFVlN",
+  "history_input" : "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Load the dataset\nfile_path = '/Users/vishesh/Desktop/geo_project/data.csv'\ndata = pd.read_csv(file_path, skiprows=3)\n\n# Convert date column to datetime\ndata['Date'] = pd.to_datetime(data['Date'], format='%Y%m')\n\n# Plot temperature values over time\nplt.figure(figsize=(10, 6))\nplt.plot(data['Date'], data['Value'], label='Temperature Values')\nplt.title('Temperature Values Over Time')\nplt.xlabel('Date')\nplt.ylabel('Temperature (Degrees Fahrenheit)')\nplt.grid(True)\nplt.legend()\nplt.show()\n\n# Decompose the time series to identify trends and seasonality\nfrom statsmodels.tsa.seasonal import seasonal_decompose\nresult = seasonal_decompose(data['Value'], model='additive', period=12)\nresult.plot()\nplt.show()\n\n# Plot a correlation matrix\nsns.heatmap(data.corr(), annot=True)\nplt.title('Correlation Matrix')\nplt.show()\n\n# Save summary statistics to a file\nsummary_stats = data.describe()\nsummary_stats.to_csv('eda_summary.csv')\n",
+  "history_output" : "2024-09-30 11:12:25.477 python[86350:7529157] +[IMKClient subclass]: chose IMKClient_Legacy\n2024-09-30 11:12:25.477 python[86350:7529157] +[IMKInputSession subclass]: chose IMKInputSession_Legacy\n",
+  "history_begin_time" : 1727709078550,
+  "history_end_time" : 1727709170335,
+  "history_notes" : null,
+  "history_process" : "0lsb3i",
+  "host_id" : null,
+  "indicator" : "Done"
+},]

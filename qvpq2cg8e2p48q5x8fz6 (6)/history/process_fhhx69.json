@@ -1,0 +1,131 @@
+[{
+  "history_id" : "7bxrh3y5hb1",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011527886,
+  "history_end_time" : 1728011527886,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "e5edl1e2uik",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011268912,
+  "history_end_time" : 1728011268912,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "41zqhkuscyn",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727715414204,
+  "history_end_time" : 1727715414204,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "5i757wrn7es",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727470464372,
+  "history_end_time" : 1727470464372,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "duylrcz9m6e",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697340,
+  "history_end_time" : 1727468697340,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "23tppywy7sv",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468653307,
+  "history_end_time" : 1727468653307,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "ismc8zly7v5",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468615938,
+  "history_end_time" : 1727468615938,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "h5ngsbdc9u0",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468502541,
+  "history_end_time" : 1727468502541,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "lffm47ueniw",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468367407,
+  "history_end_time" : 1727468367407,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "c6ebdhc54gd",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468327011,
+  "history_end_time" : 1727468327011,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "t2vvbjln8si",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468284967,
+  "history_end_time" : 1727468284967,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "qzqjbltkh39",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468233386,
+  "history_end_time" : 1727468233386,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "kAXVRepYzkv2",
+  "history_input" : "import pandas as pd\n\ndef load_precipitation_data(file_path):\n    \"\"\"\n    Loads the precipitation dataset from a CSV file.\n    \n    :param file_path: Path to the CSV file containing precipitation data\n    :return: Pandas DataFrame\n    \"\"\"\n    df = pd.read_csv(file_path, error_bad_lines=False, warn_bad_lines=True)\n    df.columns = ['Date', 'Precipitation']  # Rename columns\n    df['Date'] = pd.to_datetime(df['Date'], format='%Y%m')  # Convert 'Date' to datetime\n    df = df[df['Precipitation'] != -99]  # Filter out missing data (-99)\n    return df\n\nif __name__ == \"__main__\":\n    precipitation_df = load_precipitation_data('/Users/vishesh/Desktop/geo_project/data-2.csv')\n    if precipitation_df is not None:\n        print(precipitation_df.head())\n    else:\n        print(\"Failed to load the data.\")\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/Users/vishesh/gw-workspace/kAXVRepYzkv2/low_precipitation.py\", line 17, in <module>\n    precipitation_df = load_precipitation_data('/Users/vishesh/Desktop/geo_project/data-2.csv')\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/vishesh/gw-workspace/kAXVRepYzkv2/low_precipitation.py\", line 10, in load_precipitation_data\n    df = pd.read_csv(file_path, error_bad_lines=False, warn_bad_lines=True)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: read_csv() got an unexpected keyword argument 'error_bad_lines'\n",
+  "history_begin_time" : 1727203987899,
+  "history_end_time" : 1727203988602,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : null,
+  "indicator" : "Failed"
+},]

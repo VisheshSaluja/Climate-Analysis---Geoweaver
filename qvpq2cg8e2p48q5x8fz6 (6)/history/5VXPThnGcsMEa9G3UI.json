@@ -1,0 +1,101 @@
+[{
+  "history_id" : "c2k9j4x494x",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697335,
+  "history_end_time" : 1727468697335,
+  "history_notes" : null,
+  "history_process" : "9cqdos",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "p2ikra9urxi",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697336,
+  "history_end_time" : 1727468697336,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "jxn9ejjc0ih",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697337,
+  "history_end_time" : 1727468697337,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "usiilbvg72t",
+  "history_input" : "\n\nimport numpy as np\nimport tensorflow as tf\nfrom tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import LSTM, Dense, Dropout\nfrom tensorflow.keras.callbacks import EarlyStopping\nfrom tensorflow.keras.regularizers import l2\nimport joblib\n\n# Step 1: Load the preprocessed data\ndata = np.load('/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz')\nX_train, X_test, y_train, y_test = data['X_train'], data['X_test'], data['y_train'], data['y_test']\n\n# Step 2: Build the LSTM model\n# model = Sequential()\n# model.add(LSTM(units=50, return_sequences=True, input_shape=(X_train.shape[1], 1), \n#                kernel_regularizer=l2(0.001)))  # L2 regularization\n# model.add(Dropout(0.2))  # Increased dropout rate\n# model.add(LSTM(units=50, return_sequences=False, kernel_regularizer=l2(0.001)))\n# model.add(Dropout(0.3))\n# model.add(Dense(units=1))\n\n# # Step 3: Compile the model with reduced learning rate\n# optimizer = tf.keras.optimizers.Adam(learning_rate=0.0003)  # Reduced learning rate\n# model.compile(optimizer=optimizer, loss='mean_squared_error')\n\n# # Step 4: Train the model with early stopping\n# early_stopping = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)\n\n# history = model.fit(X_train, y_train, epochs=50, batch_size=32, validation_data=(X_test, y_test), \n#                     callbacks=[early_stopping])\n\n# # Step 5: Save the model and the training history\n# model.save('lstm_model.h5')\n# np.save('training_history.npy', history.history)\n\n# # Step 6: Make predictions on the test data\n# predictions = model.predict(X_test)\n\n# # Save predictions for later use\n# np.save('predictions.npy', predictions)\n\n# print(\"Model training completed, predictions made and saved!\")\n\n",
+  "history_output" : "",
+  "history_begin_time" : 1727468701756,
+  "history_end_time" : 1727468706052,
+  "history_notes" : null,
+  "history_process" : "s20a2d",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "ot6lro7jor1",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697339,
+  "history_end_time" : 1727468697339,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "x36cocy6xkp",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1727468706486,
+  "history_notes" : null,
+  "history_process" : "x4ch0z",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "9y9cuxd17p1",
+  "history_input" : "import numpy as np\nimport pandas as pd\nfrom sklearn.preprocessing import MinMaxScaler\nfrom sklearn.model_selection import train_test_split\nimport joblib\nimport matplotlib.pyplot as plt\n\n# Step 1: Load the dataset\nfile_path = '/Users/vishesh/Desktop/geo_project/data.csv'\ndata = pd.read_csv(file_path, skiprows=3)\n\n# Step 2: Preprocess the data\ndata['Date'] = pd.to_datetime(data['Date'], format='%Y%m')\nvalues = data['Value'].values\n\n# Step 3: Normalize the data for LSTM\nscaler = MinMaxScaler(feature_range=(0, 1))\nscaled_data = scaler.fit_transform(values.reshape(-1, 1))\n\n# Save the scaler for inverse transformation later\njoblib.dump(scaler, 'scaler.pkl')\n\n# Step 4: Create sequences for LSTM\ndef create_sequences(data, sequence_length):\n    sequences = []\n    targets = []\n    for i in range(len(data) - sequence_length):\n        seq = data[i:i + sequence_length]\n        target = data[i + sequence_length]\n        sequences.append(seq)\n        targets.append(target)\n    return np.array(sequences), np.array(targets)\n\nsequence_length = 12  # 12 months\nX, y = create_sequences(scaled_data, sequence_length)\n\n# Step 5: Split into training and test sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)\n\n# Reshape the data for LSTM\nX_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))\nX_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))\n\n# Step 6: Save preprocessed data for later use\nnp.savez('preprocessed_data.npz', X_train=X_train, X_test=X_test, y_train=y_train, y_test=y_test)\n\nprint(\"Data preprocessing completed and saved!\")\n\n\n\nplt.figure(figsize=(10,6))\nplt.plot(data['Date'], data['Value'], label='Temperature Values')\nplt.title('Temperature Values Over Time')\nplt.xlabel('Date')\nplt.ylabel('Temperature (Degrees Fahrenheit)')\nplt.grid(True)\nplt.legend()\nplt.show()\n",
+  "history_output" : "Data preprocessing completed and saved!\n2024-09-27 16:24:59.699 python[35916:5752763] +[IMKClient subclass]: chose IMKClient_Legacy\n2024-09-27 16:24:59.699 python[35916:5752763] +[IMKInputSession subclass]: chose IMKInputSession_Legacy\n",
+  "history_begin_time" : 1727468697878,
+  "history_end_time" : 1727468701209,
+  "history_notes" : null,
+  "history_process" : "keghqi",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "duylrcz9m6e",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697340,
+  "history_end_time" : 1727468697340,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "vconwd9sb5j",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697341,
+  "history_end_time" : 1727468697341,
+  "history_notes" : null,
+  "history_process" : "rfwos9",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "onlzbd3c1ey",
+  "history_input" : "import numpy as np\nimport optuna\nimport matplotlib.pyplot as plt\nfrom sklearn.metrics import mean_absolute_error\nfrom sklearn.model_selection import train_test_split\nfrom tensorflow.keras.models import Sequential, Model\nfrom tensorflow.keras.layers import Dense, Dropout, Conv1D, MaxPooling1D, Flatten, LSTM, Input, MultiHeadAttention, LayerNormalization, Add\nfrom tensorflow.keras.optimizers import Adam\nfrom pytorch_tabnet.tab_model import TabNetRegressor\n\n# Load preprocessed data\ndata_path = '/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz'\ndata = np.load(data_path)\n\n# List all variable names in the .npz file to identify contents\nprint(\"Variables in the .npz file:\", data.files)\n\n# Load data based on contents of the .npz file\nX_train = data['X_train']\ny_train = data['y_train']\n\n# Check if 'X_val' and 'y_val' exist; if not, create validation split\nif 'X_val' in data.files and 'y_val' in data.files:\n    X_val = data['X_val']\n    y_val = data['y_val']\nelse:\n    # Split the data into training and validation sets\n    X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=42)\n\n# Initialize a dictionary to store model performance\nmodel_performance = {}\n\n# Define the function to create various models\ndef create_model(trial):\n    input_shape = X_train.shape[1]\n    model_type = trial.suggest_categorical('model_type', ['dense', 'cnn', 'lstm', 'transformer', 'tabnet'])\n\n    if model_type == 'dense':\n        model = Sequential()\n        model.add(Input(shape=(input_shape,)))  # Use Input layer to specify input shape\n        num_layers = trial.suggest_int('num_layers', 1, 5)\n        for i in range(num_layers):\n            num_units = trial.suggest_int(f'num_units_l{i}', 16, 128, log=True)\n            model.add(Dense(num_units, activation='relu'))\n            dropout_rate = trial.suggest_float(f'dropout_rate_l{i}', 0.1, 0.5)\n            model.add(Dropout(dropout_rate))\n        model.add(Dense(1, activation='linear'))\n    \n    elif model_type == 'cnn':\n        model = Sequential()\n        model.add(Input(shape=(input_shape, 1)))  # Use Input layer for CNN input shape\n        model.add(Conv1D(filters=trial.suggest_int('filters', 16, 64, log=True),\n                         kernel_size=trial.suggest_int('kernel_size', 3, 5),\n                         activation='relu'))\n        model.add(MaxPooling1D(pool_size=2))\n        model.add(Flatten())\n        model.add(Dense(1, activation='linear'))\n    \n    elif model_type == 'lstm':\n        model = Sequential()\n        model.add(Input(shape=(input_shape, 1)))  # Use Input layer for LSTM input shape\n        model.add(LSTM(units=trial.suggest_int('lstm_units', 16, 64, log=True)))\n        model.add(Dense(1, activation='linear'))\n    \n    elif model_type == 'transformer':\n        inputs = Input(shape=(input_shape, 1))\n        attention = MultiHeadAttention(num_heads=trial.suggest_int('num_heads', 2, 8), key_dim=trial.suggest_int('key_dim', 16, 64))(inputs, inputs)\n        attention = Add()([inputs, attention])\n        attention = LayerNormalization(epsilon=1e-6)(attention)\n        outputs = Flatten()(attention)\n        outputs = Dense(1, activation='linear')(outputs)\n        model = Model(inputs=inputs, outputs=outputs)\n    \n    elif model_type == 'tabnet':\n        tabnet_model = TabNetRegressor(\n            n_d=trial.suggest_int('n_d', 8, 64),\n            n_a=trial.suggest_int('n_a', 8, 64),\n            n_steps=trial.suggest_int('n_steps', 3, 10),\n            gamma=trial.suggest_float('gamma', 1.0, 2.0),\n            lambda_sparse=trial.suggest_float('lambda_sparse', 1e-6, 1e-3)\n        )\n        tabnet_model.fit(\n            X_train, y_train,\n            eval_set=[(X_val, y_val)],\n            eval_metric=['mae'],\n            max_epochs=100,\n            patience=10,\n            batch_size=256,\n            virtual_batch_size=128\n        )\n        return tabnet_model\n\n\n    return tabnet_model\n\n    learning_rate = trial.suggest_float('learning_rate', 1e-5, 1e-2, log=True)\n    model.compile(optimizer=Adam(learning_rate=learning_rate), loss='mean_squared_error', metrics=['mean_absolute_error'])\n\n    return model\n\n# Define the objective function for Optuna\ndef objective(trial):\n    model = create_model(trial)\n\n    if isinstance(model, TabNetRegressor):\n        model.fit(\n            X_train, y_train,\n            eval_set=[(X_val, y_val)],\n            eval_metric=['mae'],\n            max_epochs=100,\n            patience=10,\n            batch_size=256,\n            virtual_batch_size=128\n        )\n        y_pred = model.predict(X_val)\n        mae = mean_absolute_error(y_val, y_pred)\n    else:\n        model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=10, batch_size=32, verbose=0)\n        _, mae = model.evaluate(X_val, y_val, verbose=0)\n\n    model_type = trial.params['model_type']\n    model_performance[model_type] = mae\n    return mae\n\n# Run the Bayesian optimization\nstudy = optuna.create_study(direction='minimize')\nstudy.optimize(objective, n_trials=10)  # Set n_trials as needed\n\n# Get the best hyperparameters\nbest_params = study.best_params\nprint(f\"Best hyperparameters: {best_params}\")\n\n# Display performance of each model\nprint(\"Model performance (MAE):\")\nfor model_type, mae in model_performance.items():\n    print(f\"{model_type}: {mae}\")\n\n# Plot the model performance\nplt.figure(figsize=(10, 5))\nplt.bar(model_performance.keys(), model_performance.values(), color='skyblue')\nplt.xlabel('Model Type')\nplt.ylabel('Mean Absolute Error')\nplt.title('Model Performance Comparison')\nplt.show()\n",
+  "history_output" : "Variables in the .npz file: ['X_train', 'X_test', 'y_train', 'y_test']\n[I 2024-09-27 16:25:05,960] A new study created in memory with name: no-name-3d3eea1c-4d23-45fb-a61b-5709e70779a2\n/opt/anaconda3/lib/python3.11/site-packages/pytorch_tabnet/abstract_model.py:82: UserWarning: Device used : cpu\n  warnings.warn(f\"Device used : {self.device}\")\n[W 2024-09-27 16:25:05,965] Trial 0 failed with parameters: {'model_type': 'tabnet', 'n_d': 14, 'n_a': 24, 'n_steps': 5, 'gamma': 1.8276160750280501, 'lambda_sparse': 0.0009776327501219428} because of the following error: ValueError('Found array with dim 3. None expected <= 2.').\nTraceback (most recent call last):\n  File \"/opt/anaconda3/lib/python3.11/site-packages/optuna/study/_optimize.py\", line 197, in _run_trial\n    value_or_values = func(trial)\n                      ^^^^^^^^^^^\n  File \"/Users/vishesh/gw-workspace/onlzbd3c1ey/auto_ml.py\", line 103, in objective\n    model = create_model(trial)\n            ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/vishesh/gw-workspace/onlzbd3c1ey/auto_ml.py\", line 82, in create_model\n    tabnet_model.fit(\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pytorch_tabnet/abstract_model.py\", line 217, in fit\n    check_input(X_train)\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pytorch_tabnet/utils.py\", line 507, in check_input\n    check_array(X, accept_sparse=True)\n  File \"/opt/anaconda3/lib/python3.11/site-packages/sklearn/utils/validation.py\", line 915, in check_array\n    raise ValueError(\nValueError: Found array with dim 3. None expected <= 2.\n[W 2024-09-27 16:25:05,966] Trial 0 failed with value None.\nTraceback (most recent call last):\n  File \"/Users/vishesh/gw-workspace/onlzbd3c1ey/auto_ml.py\", line 127, in <module>\n    study.optimize(objective, n_trials=10)  # Set n_trials as needed\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/optuna/study/study.py\", line 475, in optimize\n    _optimize(\n  File \"/opt/anaconda3/lib/python3.11/site-packages/optuna/study/_optimize.py\", line 63, in _optimize\n    _optimize_sequential(\n  File \"/opt/anaconda3/lib/python3.11/site-packages/optuna/study/_optimize.py\", line 160, in _optimize_sequential\n    frozen_trial = _run_trial(study, func, catch)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/optuna/study/_optimize.py\", line 248, in _run_trial\n    raise func_err\n  File \"/opt/anaconda3/lib/python3.11/site-packages/optuna/study/_optimize.py\", line 197, in _run_trial\n    value_or_values = func(trial)\n                      ^^^^^^^^^^^\n  File \"/Users/vishesh/gw-workspace/onlzbd3c1ey/auto_ml.py\", line 103, in objective\n    model = create_model(trial)\n            ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/vishesh/gw-workspace/onlzbd3c1ey/auto_ml.py\", line 82, in create_model\n    tabnet_model.fit(\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pytorch_tabnet/abstract_model.py\", line 217, in fit\n    check_input(X_train)\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pytorch_tabnet/utils.py\", line 507, in check_input\n    check_array(X, accept_sparse=True)\n  File \"/opt/anaconda3/lib/python3.11/site-packages/sklearn/utils/validation.py\", line 915, in check_array\n    raise ValueError(\nValueError: Found array with dim 3. None expected <= 2.\n",
+  "history_begin_time" : 1727468702561,
+  "history_end_time" : 1727468706485,
+  "history_notes" : null,
+  "history_process" : "vnrvoi",
+  "host_id" : "100001",
+  "indicator" : "Failed"
+}]

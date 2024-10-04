@@ -1,0 +1,171 @@
+[{
+  "history_id" : "1uwjalch3ji",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011527879,
+  "history_end_time" : 1728011527879,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "0kp0b9oa6i8",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011268883,
+  "history_end_time" : 1728011268883,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "9nd2kiga6n4",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727715414198,
+  "history_end_time" : 1727715414198,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "5abydctbhax",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727470464360,
+  "history_end_time" : 1727470464360,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "p2ikra9urxi",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697336,
+  "history_end_time" : 1727468697336,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "5uxv0h3ekjw",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468653303,
+  "history_end_time" : 1727468653303,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "cpdkfnuc8vu",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468615930,
+  "history_end_time" : 1727468615930,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "7rcducrr9sh",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468502536,
+  "history_end_time" : 1727468502536,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "sxitsbxpcol",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468367397,
+  "history_end_time" : 1727468367397,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "8r8a1ikaish",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468327006,
+  "history_end_time" : 1727468327006,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "dnstzcq4uyn",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468284959,
+  "history_end_time" : 1727468284959,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "ktrhblt09f0",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468233379,
+  "history_end_time" : 1727468233379,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "mpZlRhkIoryN",
+  "history_input" : "# import pandas as pd\n# from sklearn.preprocessing import StandardScaler\n\n# def preprocess_data(temp_file, precip_file):\n#     # Load datasets\n#     temp_data = pd.read_csv(temp_file, skiprows=4)\n#     precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n#     # Rename columns for easier access\n#     temp_data.columns = ['Year', 'Temp_Value', 'Temp_Anomaly', 'Temp_Uncertainty']\n#     precip_data.columns = ['Year', 'Precipitation', 'Uncertainty']\n    \n#     # Merge the datasets on Year\n#     merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n#     # Fill missing values\n#     merged_data.fillna(method='ffill', inplace=True)\n    \n#     # Normalize the features\n#     scaler = StandardScaler()\n#     scaled_data = pd.DataFrame(scaler.fit_transform(merged_data[['Temp_Value', 'Precipitation']]), \n#                                columns=['Temp_Value', 'Precipitation'])\n#     scaled_data['Year'] = merged_data['Year']\n    \n#     # Save the preprocessed data\n#     scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n#     print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\n# if __name__ == \"__main__\":\n#     preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', 'precipitation_data.csv')\n\n\n\n\n# import pandas as pd\n# from sklearn.preprocessing import StandardScaler\n\n# def preprocess_data(temp_file, precip_file):\n#     # Load datasets\n#     temp_data = pd.read_csv(temp_file, skiprows=4)\n#     precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n#     # Automatically rename columns based on the dataset (assumes first column is Year, and others are feature values)\n#     temp_data.columns = ['Year'] + list(temp_data.columns[1:])\n#     precip_data.columns = ['Year'] + list(precip_data.columns[1:])\n    \n#     # Merge the datasets on 'Year' column\n#     merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n#     # Fill missing values (forward fill method)\n#     merged_data.ffill(inplace=True)\n    \n#     # Select all columns except 'Year' for normalization\n#     features = merged_data.drop(columns=['Year'])\n    \n#     # Normalize all feature columns\n#     scaler = StandardScaler()\n#     scaled_features = pd.DataFrame(scaler.fit_transform(features), columns=features.columns)\n    \n#     # Add 'Year' column back to the scaled dataset\n#     scaled_data = pd.concat([merged_data[['Year']], scaled_features], axis=1)\n    \n#     # Save the preprocessed data\n#     scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n#     print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\n# if __name__ == \"__main__\":\n#     preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', '/Users/vishesh/Desktop/geo_project/data-2.csv')\n\n\n\n\n\n\n\n\n\nimport pandas as pd\nfrom load_temperature_data import load_temperature_data\nfrom load_precipitation_data import load_precipitation_data\n\ndef preprocess_data(temp_file, precip_file):\n    \"\"\"\n    Loads and merges temperature and precipitation data into a single DataFrame.\n    \n    :param temp_file: Path to the temperature data CSV\n    :param precip_file: Path to the precipitation data CSV\n    :return: Merged Pandas DataFrame\n    \"\"\"\n    temp_df = load_temperature_data(temp_file)\n    precip_df = load_precipitation_data(precip_file)\n    \n    # Merge the two datasets on the 'Date' column\n    merged_df = pd.merge(temp_df, precip_df, on='Date', how='inner')\n    \n    return merged_df\n\nif __name__ == \"__main__\":\n    merged_df = preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', '/Users/vishesh/Desktop/geo_project/data-2.csv')\n    print(merged_df.head())",
+  "history_output" : "Traceback (most recent call last):\n  File \"/Users/vishesh/gw-workspace/mpZlRhkIoryN/data_preprocessing.py\", line 79, in <module>\n    from load_temperature_data import load_temperature_data\nModuleNotFoundError: No module named 'load_temperature_data'\n",
+  "history_begin_time" : 1727204726565,
+  "history_end_time" : 1727204727144,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "PhNYO78C3DGU",
+  "history_input" : "# import pandas as pd\n# from sklearn.preprocessing import StandardScaler\n\n# def preprocess_data(temp_file, precip_file):\n#     # Load datasets\n#     temp_data = pd.read_csv(temp_file, skiprows=4)\n#     precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n#     # Rename columns for easier access\n#     temp_data.columns = ['Year', 'Temp_Value', 'Temp_Anomaly', 'Temp_Uncertainty']\n#     precip_data.columns = ['Year', 'Precipitation', 'Uncertainty']\n    \n#     # Merge the datasets on Year\n#     merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n#     # Fill missing values\n#     merged_data.fillna(method='ffill', inplace=True)\n    \n#     # Normalize the features\n#     scaler = StandardScaler()\n#     scaled_data = pd.DataFrame(scaler.fit_transform(merged_data[['Temp_Value', 'Precipitation']]), \n#                                columns=['Temp_Value', 'Precipitation'])\n#     scaled_data['Year'] = merged_data['Year']\n    \n#     # Save the preprocessed data\n#     scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n#     print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\n# if __name__ == \"__main__\":\n#     preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', 'precipitation_data.csv')\n\n\n\n\nimport pandas as pd\nfrom sklearn.preprocessing import StandardScaler\n\ndef preprocess_data(temp_file, precip_file):\n    # Load datasets\n    temp_data = pd.read_csv(temp_file, skiprows=4)\n    precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n    # Automatically rename columns based on the dataset (assumes first column is Year, and others are feature values)\n    temp_data.columns = ['Year'] + list(temp_data.columns[1:])\n    precip_data.columns = ['Year'] + list(precip_data.columns[1:])\n    \n    # Merge the datasets on 'Year' column\n    merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n    # Fill missing values (forward fill method)\n    merged_data.ffill(inplace=True)\n    \n    # Select all columns except 'Year' for normalization\n    features = merged_data.drop(columns=['Year'])\n    \n    # Normalize all feature columns\n    scaler = StandardScaler()\n    scaled_features = pd.DataFrame(scaler.fit_transform(features), columns=features.columns)\n    \n    # Add 'Year' column back to the scaled dataset\n    scaled_data = pd.concat([merged_data[['Year']], scaled_features], axis=1)\n    \n    # Save the preprocessed data\n    scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n    print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\nif __name__ == \"__main__\":\n    preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', '/Users/vishesh/Desktop/geo_project/data-2.csv')\n",
+  "history_output" : "Preprocessed data saved as preprocessed_climate_data.csv\n",
+  "history_begin_time" : 1727200991157,
+  "history_end_time" : 1727200992207,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "eaV1lX0ih6NB",
+  "history_input" : "# import pandas as pd\n# from sklearn.preprocessing import StandardScaler\n\n# def preprocess_data(temp_file, precip_file):\n#     # Load datasets\n#     temp_data = pd.read_csv(temp_file, skiprows=4)\n#     precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n#     # Rename columns for easier access\n#     temp_data.columns = ['Year', 'Temp_Value', 'Temp_Anomaly', 'Temp_Uncertainty']\n#     precip_data.columns = ['Year', 'Precipitation', 'Uncertainty']\n    \n#     # Merge the datasets on Year\n#     merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n#     # Fill missing values\n#     merged_data.fillna(method='ffill', inplace=True)\n    \n#     # Normalize the features\n#     scaler = StandardScaler()\n#     scaled_data = pd.DataFrame(scaler.fit_transform(merged_data[['Temp_Value', 'Precipitation']]), \n#                                columns=['Temp_Value', 'Precipitation'])\n#     scaled_data['Year'] = merged_data['Year']\n    \n#     # Save the preprocessed data\n#     scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n#     print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\n# if __name__ == \"__main__\":\n#     preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', 'precipitation_data.csv')\n\n\n\n\nimport pandas as pd\nfrom sklearn.preprocessing import StandardScaler\n\ndef preprocess_data(temp_file, precip_file):\n    # Load datasets\n    temp_data = pd.read_csv(temp_file, skiprows=4)\n    precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n    # Automatically rename columns based on the dataset (assumes first column is Year, and others are feature values)\n    temp_data.columns = ['Year'] + list(temp_data.columns[1:])\n    precip_data.columns = ['Year'] + list(precip_data.columns[1:])\n    \n    # Merge the datasets on 'Year' column\n    merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n    # Fill missing values (forward fill method)\n    merged_data.fillna(method='ffill', inplace=True)\n    \n    # Select all columns except 'Year' for normalization\n    features = merged_data.drop(columns=['Year'])\n    \n    # Normalize all feature columns\n    scaler = StandardScaler()\n    scaled_features = pd.DataFrame(scaler.fit_transform(features), columns=features.columns)\n    \n    # Add 'Year' column back to the scaled dataset\n    scaled_data = pd.concat([merged_data[['Year']], scaled_features], axis=1)\n    \n    # Save the preprocessed data\n    scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n    print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\nif __name__ == \"__main__\":\n    preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', '/Users/vishesh/Desktop/geo_project/data-2.csv')\n",
+  "history_output" : "/Users/vishesh/gw-workspace/eaV1lX0ih6NB/data_preprocessing.py:51: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.\n  merged_data.fillna(method='ffill', inplace=True)\nPreprocessed data saved as preprocessed_climate_data.csv\n",
+  "history_begin_time" : 1727200937629,
+  "history_end_time" : 1727200938700,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "awaVXYPkOHr5",
+  "history_input" : "# import pandas as pd\n# from sklearn.preprocessing import StandardScaler\n\n# def preprocess_data(temp_file, precip_file):\n#     # Load datasets\n#     temp_data = pd.read_csv(temp_file, skiprows=4)\n#     precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n#     # Rename columns for easier access\n#     temp_data.columns = ['Year', 'Temp_Value', 'Temp_Anomaly', 'Temp_Uncertainty']\n#     precip_data.columns = ['Year', 'Precipitation', 'Uncertainty']\n    \n#     # Merge the datasets on Year\n#     merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n#     # Fill missing values\n#     merged_data.fillna(method='ffill', inplace=True)\n    \n#     # Normalize the features\n#     scaler = StandardScaler()\n#     scaled_data = pd.DataFrame(scaler.fit_transform(merged_data[['Temp_Value', 'Precipitation']]), \n#                                columns=['Temp_Value', 'Precipitation'])\n#     scaled_data['Year'] = merged_data['Year']\n    \n#     # Save the preprocessed data\n#     scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n#     print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\n# if __name__ == \"__main__\":\n#     preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', 'precipitation_data.csv')\n\n\n\n\nimport pandas as pd\nfrom sklearn.preprocessing import StandardScaler\n\ndef preprocess_data(temp_file, precip_file):\n    # Load datasets\n    temp_data = pd.read_csv(temp_file, skiprows=4)\n    precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n    # Automatically rename columns based on the dataset (assumes first column is Year, and others are feature values)\n    temp_data.columns = ['Year'] + list(temp_data.columns[1:])\n    precip_data.columns = ['Year'] + list(precip_data.columns[1:])\n    \n    # Merge the datasets on 'Year' column\n    merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n    # Fill missing values (forward fill method)\n    merged_data.ffillna(method='ffill', inplace=True)\n    \n    # Select all columns except 'Year' for normalization\n    features = merged_data.drop(columns=['Year'])\n    \n    # Normalize all feature columns\n    scaler = StandardScaler()\n    scaled_features = pd.DataFrame(scaler.fit_transform(features), columns=features.columns)\n    \n    # Add 'Year' column back to the scaled dataset\n    scaled_data = pd.concat([merged_data[['Year']], scaled_features], axis=1)\n    \n    # Save the preprocessed data\n    scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n    print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\nif __name__ == \"__main__\":\n    preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', '/Users/vishesh/Desktop/geo_project/data-2.csv')\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/Users/vishesh/gw-workspace/awaVXYPkOHr5/data_preprocessing.py\", line 68, in <module>\n    preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', '/Users/vishesh/Desktop/geo_project/data-2.csv')\n  File \"/Users/vishesh/gw-workspace/awaVXYPkOHr5/data_preprocessing.py\", line 51, in preprocess_data\n    merged_data.ffillna(method='ffill', inplace=True)\n    ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/generic.py\", line 6204, in __getattr__\n    return object.__getattribute__(self, name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'DataFrame' object has no attribute 'ffillna'. Did you mean: 'fillna'?\n",
+  "history_begin_time" : 1727200883197,
+  "history_end_time" : 1727200884216,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "mFREdOKRxuFY",
+  "history_input" : "# import pandas as pd\n# from sklearn.preprocessing import StandardScaler\n\n# def preprocess_data(temp_file, precip_file):\n#     # Load datasets\n#     temp_data = pd.read_csv(temp_file, skiprows=4)\n#     precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n#     # Rename columns for easier access\n#     temp_data.columns = ['Year', 'Temp_Value', 'Temp_Anomaly', 'Temp_Uncertainty']\n#     precip_data.columns = ['Year', 'Precipitation', 'Uncertainty']\n    \n#     # Merge the datasets on Year\n#     merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n#     # Fill missing values\n#     merged_data.fillna(method='ffill', inplace=True)\n    \n#     # Normalize the features\n#     scaler = StandardScaler()\n#     scaled_data = pd.DataFrame(scaler.fit_transform(merged_data[['Temp_Value', 'Precipitation']]), \n#                                columns=['Temp_Value', 'Precipitation'])\n#     scaled_data['Year'] = merged_data['Year']\n    \n#     # Save the preprocessed data\n#     scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n#     print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\n# if __name__ == \"__main__\":\n#     preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', 'precipitation_data.csv')\n\n\n\n\nimport pandas as pd\nfrom sklearn.preprocessing import StandardScaler\n\ndef preprocess_data(temp_file, precip_file):\n    # Load datasets\n    temp_data = pd.read_csv(temp_file, skiprows=4)\n    precip_data = pd.read_csv(precip_file, skiprows=4)\n    \n    # Automatically rename columns based on the dataset (assumes first column is Year, and others are feature values)\n    temp_data.columns = ['Year'] + list(temp_data.columns[1:])\n    precip_data.columns = ['Year'] + list(precip_data.columns[1:])\n    \n    # Merge the datasets on 'Year' column\n    merged_data = pd.merge(temp_data, precip_data, on='Year')\n    \n    # Fill missing values (forward fill method)\n    merged_data.fillna(method='ffill', inplace=True)\n    \n    # Select all columns except 'Year' for normalization\n    features = merged_data.drop(columns=['Year'])\n    \n    # Normalize all feature columns\n    scaler = StandardScaler()\n    scaled_features = pd.DataFrame(scaler.fit_transform(features), columns=features.columns)\n    \n    # Add 'Year' column back to the scaled dataset\n    scaled_data = pd.concat([merged_data[['Year']], scaled_features], axis=1)\n    \n    # Save the preprocessed data\n    scaled_data.to_csv('preprocessed_climate_data.csv', index=False)\n    print(\"Preprocessed data saved as preprocessed_climate_data.csv\")\n\nif __name__ == \"__main__\":\n    preprocess_data('/Users/vishesh/Desktop/geo_project/data.csv', '/Users/vishesh/Desktop/geo_project/data-2.csv')\n",
+  "history_output" : "/Users/vishesh/gw-workspace/mFREdOKRxuFY/data_preprocessing.py:51: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.\n  merged_data.fillna(method='ffill', inplace=True)\nPreprocessed data saved as preprocessed_climate_data.csv\n",
+  "history_begin_time" : 1727200841317,
+  "history_end_time" : 1727200844876,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : null,
+  "indicator" : "Done"
+},]

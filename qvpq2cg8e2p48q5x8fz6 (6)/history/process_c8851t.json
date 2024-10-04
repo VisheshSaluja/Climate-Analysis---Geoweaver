@@ -1,0 +1,161 @@
+[{
+  "history_id" : "zvotkqplwb0",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011527880,
+  "history_end_time" : 1728011527880,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "qo8keh36vdg",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011268884,
+  "history_end_time" : 1728011268884,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "hmjiol7bnut",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727715414198,
+  "history_end_time" : 1727715414198,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "mb1mzx21lpk",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727470464361,
+  "history_end_time" : 1727470464361,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "jxn9ejjc0ih",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468697337,
+  "history_end_time" : 1727468697337,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "k9q6lpaurrg",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468653303,
+  "history_end_time" : 1727468653303,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "rr4wsbdhyj5",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468615931,
+  "history_end_time" : 1727468615931,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "qczz74kdruc",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468502536,
+  "history_end_time" : 1727468502536,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "uzal58emtbn",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468367398,
+  "history_end_time" : 1727468367398,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "wtn9u6ui4k2",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468327007,
+  "history_end_time" : 1727468327007,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "jz8nvxwisu5",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468284960,
+  "history_end_time" : 1727468284960,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "yctrhi1969a",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727468233379,
+  "history_end_time" : 1727468233379,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "AzCVSMpjJKYx",
+  "history_input" : "import pandas as pd\n\ndef analyze_trends(file_name):\n    # Load the data\n    data = pd.read_csv(file_name)\n    \n    # Rename columns to more meaningful names\n    data.columns = ['Year', 'Temp_Value', 'Precipitation']\n    \n    # Calculate 10-year moving averages for both temperature and precipitation\n    data['10-year temp avg'] = data['Temp_Value'].rolling(window=10).mean()\n    data['10-year precip avg'] = data['Precipitation'].rolling(window=10).mean()\n    \n    # Save the analyzed data\n    data.to_csv('/Users/vishesh/Desktop/geo_project/analyzed_climate_data.csv', index=False)\n    print(\"Analyzed trends saved as analyzed_climate_data.csv\")\n\nif __name__ == \"__main__\":\n    analyze_trends('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv')\n",
+  "history_output" : "Analyzed trends saved as analyzed_climate_data.csv\n",
+  "history_begin_time" : 1727201563772,
+  "history_end_time" : 1727201564373,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "bBHuEIUAgKGY",
+  "history_input" : "import pandas as pd\n\ndef analyze_trends(file_name):\n    data = pd.read_csv(file_name)\n    \n    # Print column names to check what is available\n    print(\"Columns in the dataset:\", data.columns)\n    \n    # Calculate 10-year moving averages for both temperature and precipitation\n    # Make sure column names match what is in the data\n    if 'Temp_Value' in data.columns and 'Precipitation' in data.columns:\n        data['10-year temp avg'] = data['Temp_Value'].rolling(window=10).mean()\n        data['10-year precip avg'] = data['Precipitation'].rolling(window=10).mean()\n        \n        # Save the analyzed data\n        data.to_csv('/Users/vishesh/Desktop/geo_project/analyzed_climate_data.csv', index=False)\n        print(\"Analyzed trends saved as analyzed_climate_data.csv\")\n    else:\n        print(\"Error: Expected columns 'Temp_Value' and 'Precipitation' not found.\")\n\nif __name__ == \"__main__\":\n    analyze_trends('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv')\n",
+  "history_output" : "Columns in the dataset: Index(['Year', '50.33', '27.53'], dtype='object')\nError: Expected columns 'Temp_Value' and 'Precipitation' not found.\n",
+  "history_begin_time" : 1727201389801,
+  "history_end_time" : 1727201390655,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "7i96qtX8qMYo",
+  "history_input" : "import pandas as pd\n\ndef analyze_trends(file_name):\n    data = pd.read_csv(file_name)\n    \n    # Print column names to check what is available\n    print(\"Columns in the dataset:\", data.columns)\n    \n    # Calculate 10-year moving averages for both temperature and precipitation\n    # Make sure column names match what is in the data\n    if 'Temp_Value' in data.columns and 'Precipitation' in data.columns:\n        data['10-year temp avg'] = data['Temp_Value'].rolling(window=10).mean()\n        data['10-year precip avg'] = data['Precipitation'].rolling(window=10).mean()\n        \n        # Save the analyzed data\n        data.to_csv('/Users/vishesh/Desktop/geo_project/analyzed_climate_data.csv', index=False)\n        print(\"Analyzed trends saved as analyzed_climate_data.csv\")\n    else:\n        print(\"Error: Expected columns 'Temp_Value' and 'Precipitation' not found.\")\n\nif __name__ == \"__main__\":\n    analyze_trends('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv')\n",
+  "history_output" : "Columns in the dataset: Index(['Year', '50.33', '27.53'], dtype='object')\nError: Expected columns 'Temp_Value' and 'Precipitation' not found.\n",
+  "history_begin_time" : 1727201266299,
+  "history_end_time" : 1727201266843,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "4wvnMkYvtbLI",
+  "history_input" : "import pandas as pd\n\ndef analyze_trends(file_name):\n    data = pd.read_csv(file_name)\n    \n    # Calculate 10-year moving averages for both temperature and precipitation\n    data['10-year temp avg'] = data['Temp_Value'].rolling(window=10).mean()\n    data['10-year precip avg'] = data['Precipitation'].rolling(window=10).mean()\n    \n    # Save the analyzed data\n    data.to_csv('analyzed_climate_data.csv', index=False)\n    print(\"Analyzed trends saved as analyzed_climate_data.csv\")\n\nif __name__ == \"__main__\":\n    analyze_trends('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv')\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/base.py\", line 3791, in get_loc\n    return self._engine.get_loc(casted_key)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"index.pyx\", line 152, in pandas._libs.index.IndexEngine.get_loc\n  File \"index.pyx\", line 181, in pandas._libs.index.IndexEngine.get_loc\n  File \"pandas/_libs/hashtable_class_helper.pxi\", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item\n  File \"pandas/_libs/hashtable_class_helper.pxi\", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item\nKeyError: 'Temp_Value'\nThe above exception was the direct cause of the following exception:\nTraceback (most recent call last):\n  File \"/Users/vishesh/gw-workspace/4wvnMkYvtbLI/trend_analysis.py\", line 15, in <module>\n    analyze_trends('/Users/vishesh/Desktop/geo_project/preprocessed_climate_data.csv')\n  File \"/Users/vishesh/gw-workspace/4wvnMkYvtbLI/trend_analysis.py\", line 7, in analyze_trends\n    data['10-year temp avg'] = data['Temp_Value'].rolling(window=10).mean()\n                               ~~~~^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/frame.py\", line 3893, in __getitem__\n    indexer = self.columns.get_loc(key)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/base.py\", line 3798, in get_loc\n    raise KeyError(key) from err\nKeyError: 'Temp_Value'\n",
+  "history_begin_time" : 1727201193498,
+  "history_end_time" : 1727201194278,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : null,
+  "indicator" : "Failed"
+},]

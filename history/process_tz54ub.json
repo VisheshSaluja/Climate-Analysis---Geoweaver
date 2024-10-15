@@ -1,0 +1,81 @@
+[{
+  "history_id" : "j955vigvsix",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728941842610,
+  "history_end_time" : 1728941842610,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "tm9g21515b5",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212782,
+  "history_end_time" : 1728932212782,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "ib1key52zqk",
+  "history_input" : "import numpy as np\nimport matplotlib.pyplot as plt\nimport joblib\n\n# Load predictions, actual values, and scaler\npredictions = np.load('/Users/vishesh/gw-workspace/9I3eI9y6wb9B/predictions.npy')\ndata = np.load('/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz')\ny_test = data['y_test']\n\n# Load the scaler for inverse transformation\nscaler = joblib.load('/Users/vishesh/gw-workspace/f7bNu3SQ6blN/scaler.pkl')\n\n# Inverse scale the predictions and real values\npredicted_values = scaler.inverse_transform(predictions)\nreal_values = scaler.inverse_transform(y_test.reshape(-1, 1))\n\n# Scientific Objective: Analyze Heatwave Events\n# Assuming a heatwave is defined as a temperature above 90°F\n\n# Identify predicted heatwave events\nheatwave_threshold = 90.0\npredicted_heatwaves = predicted_values > heatwave_threshold\nreal_heatwaves = real_values > heatwave_threshold\n\n# Count predicted vs. actual heatwave events\nnum_predicted_heatwaves = np.sum(predicted_heatwaves)\nnum_actual_heatwaves = np.sum(real_heatwaves)\n\nprint(f\"Number of predicted heatwave events: {num_predicted_heatwaves}\")\nprint(f\"Number of actual heatwave events: {num_actual_heatwaves}\")\n\n# Calculate the prediction accuracy for heatwave events\nheatwave_accuracy = np.sum(predicted_heatwaves == real_heatwaves) / len(real_heatwaves)\nprint(f\"Heatwave Prediction Accuracy: {heatwave_accuracy * 100:.2f}%\")\n\n# Visualize heatwave predictions vs actual values\nplt.figure(figsize=(14, 6))\nplt.plot(real_values, label='Actual Temperature', color='blue')\nplt.plot(predicted_values, label='Predicted Temperature', color='red')\nplt.axhline(y=heatwave_threshold, color='green', linestyle='--', label='Heatwave Threshold (90°F)')\nplt.title('Heatwave Events: Real vs Predicted Temperature')\nplt.xlabel('Time')\nplt.ylabel('Temperature (°F)')\nplt.legend()\nplt.grid(True)\nplt.show()\n\n# Save heatwave analysis to a file\nwith open('heatwave_analysis.txt', 'w') as f:\n    f.write(f\"Number of predicted heatwave events: {num_predicted_heatwaves}\\n\")\n    f.write(f\"Number of actual heatwave events: {num_actual_heatwaves}\\n\")\n    f.write(f\"Heatwave Prediction Accuracy: {heatwave_accuracy * 100:.2f}%\\n\")\n",
+  "history_output" : "Number of predicted heatwave events: 0\nNumber of actual heatwave events: 0\nHeatwave Prediction Accuracy: 100.00%\n",
+  "history_begin_time" : 1728863808331,
+  "history_end_time" : 1728865472254,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "9auU2NdJg5bO",
+  "history_input" : "import numpy as np\nimport matplotlib.pyplot as plt\nimport joblib\n\n# Load predictions, actual values, and scaler\npredictions = np.load('/Users/vishesh/gw-workspace/9I3eI9y6wb9B/predictions.npy')\ndata = np.load('/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz')\ny_test = data['y_test']\n\n# Load the scaler for inverse transformation\nscaler = joblib.load('/Users/vishesh/gw-workspace/f7bNu3SQ6blN/scaler.pkl')\n\n# Inverse scale the predictions and real values\npredicted_values = scaler.inverse_transform(predictions)\nreal_values = scaler.inverse_transform(y_test.reshape(-1, 1))\n\n# Scientific Objective: Analyze Heatwave Events\n# Assuming a heatwave is defined as a temperature above 90°F\n\n# Identify predicted heatwave events\nheatwave_threshold = 90.0\npredicted_heatwaves = predicted_values > heatwave_threshold\nreal_heatwaves = real_values > heatwave_threshold\n\n# Count predicted vs. actual heatwave events\nnum_predicted_heatwaves = np.sum(predicted_heatwaves)\nnum_actual_heatwaves = np.sum(real_heatwaves)\n\nprint(f\"Number of predicted heatwave events: {num_predicted_heatwaves}\")\nprint(f\"Number of actual heatwave events: {num_actual_heatwaves}\")\n\n# Calculate the prediction accuracy for heatwave events\nheatwave_accuracy = np.sum(predicted_heatwaves == real_heatwaves) / len(real_heatwaves)\nprint(f\"Heatwave Prediction Accuracy: {heatwave_accuracy * 100:.2f}%\")\n\n# Visualize heatwave predictions vs actual values\nplt.figure(figsize=(14, 6))\nplt.plot(real_values, label='Actual Temperature', color='blue')\nplt.plot(predicted_values, label='Predicted Temperature', color='red')\nplt.axhline(y=heatwave_threshold, color='green', linestyle='--', label='Heatwave Threshold (90°F)')\nplt.title('Heatwave Events: Real vs Predicted Temperature')\nplt.xlabel('Time')\nplt.ylabel('Temperature (°F)')\nplt.legend()\nplt.grid(True)\nplt.show()\n\n# Save heatwave analysis to a file\nwith open('heatwave_analysis.txt', 'w') as f:\n    f.write(f\"Number of predicted heatwave events: {num_predicted_heatwaves}\\n\")\n    f.write(f\"Number of actual heatwave events: {num_actual_heatwaves}\\n\")\n    f.write(f\"Heatwave Prediction Accuracy: {heatwave_accuracy * 100:.2f}%\\n\")\n",
+  "history_output" : "Number of predicted heatwave events: 0\nNumber of actual heatwave events: 0\nHeatwave Prediction Accuracy: 100.00%\n2024-10-04 10:14:53.217 python[3422:11491828] +[IMKClient subclass]: chose IMKClient_Legacy\n2024-10-04 10:14:53.217 python[3422:11491828] +[IMKInputSession subclass]: chose IMKInputSession_Legacy\n",
+  "history_begin_time" : 1728051291823,
+  "history_end_time" : 1728051295834,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "relwbghik8j",
+  "history_input" : "import numpy as np\nimport matplotlib.pyplot as plt\nimport joblib\n\n# Load predictions, actual values, and scaler\npredictions = np.load('/Users/vishesh/gw-workspace/9I3eI9y6wb9B/predictions.npy')\ndata = np.load('/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz')\ny_test = data['y_test']\n\n# Load the scaler for inverse transformation\nscaler = joblib.load('/Users/vishesh/gw-workspace/f7bNu3SQ6blN/scaler.pkl')\n\n# Inverse scale the predictions and real values\npredicted_values = scaler.inverse_transform(predictions)\nreal_values = scaler.inverse_transform(y_test.reshape(-1, 1))\n\n# Scientific Objective: Analyze Heatwave Events\n# Assuming a heatwave is defined as a temperature above 90°F\n\n# Identify predicted heatwave events\nheatwave_threshold = 90.0\npredicted_heatwaves = predicted_values > heatwave_threshold\nreal_heatwaves = real_values > heatwave_threshold\n\n# Count predicted vs. actual heatwave events\nnum_predicted_heatwaves = np.sum(predicted_heatwaves)\nnum_actual_heatwaves = np.sum(real_heatwaves)\n\nprint(f\"Number of predicted heatwave events: {num_predicted_heatwaves}\")\nprint(f\"Number of actual heatwave events: {num_actual_heatwaves}\")\n\n# Calculate the prediction accuracy for heatwave events\nheatwave_accuracy = np.sum(predicted_heatwaves == real_heatwaves) / len(real_heatwaves)\nprint(f\"Heatwave Prediction Accuracy: {heatwave_accuracy * 100:.2f}%\")\n\n# Visualize heatwave predictions vs actual values\nplt.figure(figsize=(14, 6))\nplt.plot(real_values, label='Actual Temperature', color='blue')\nplt.plot(predicted_values, label='Predicted Temperature', color='red')\nplt.axhline(y=heatwave_threshold, color='green', linestyle='--', label='Heatwave Threshold (90°F)')\nplt.title('Heatwave Events: Real vs Predicted Temperature')\nplt.xlabel('Time')\nplt.ylabel('Temperature (°F)')\nplt.legend()\nplt.grid(True)\nplt.show()\n\n# Save heatwave analysis to a file\nwith open('heatwave_analysis.txt', 'w') as f:\n    f.write(f\"Number of predicted heatwave events: {num_predicted_heatwaves}\\n\")\n    f.write(f\"Number of actual heatwave events: {num_actual_heatwaves}\\n\")\n    f.write(f\"Heatwave Prediction Accuracy: {heatwave_accuracy * 100:.2f}%\\n\")\n",
+  "history_output" : "Number of predicted heatwave events: 0\nNumber of actual heatwave events: 0\nHeatwave Prediction Accuracy: 100.00%\n2024-10-04 10:13:36.063 python[3338:11489991] +[IMKClient subclass]: chose IMKClient_Legacy\n2024-10-04 10:13:36.063 python[3338:11489991] +[IMKInputSession subclass]: chose IMKInputSession_Legacy\n",
+  "history_begin_time" : 1728051214784,
+  "history_end_time" : 1728051244418,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "buc2i5uinji",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011527890,
+  "history_end_time" : 1728011527890,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "rckkbzzgt2x",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728011268926,
+  "history_end_time" : 1728011268926,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "pw702ssssia",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1727715414209,
+  "history_end_time" : 1727715414209,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},]

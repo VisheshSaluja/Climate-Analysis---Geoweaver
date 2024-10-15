@@ -1,0 +1,181 @@
+[{
+  "history_id" : "siik06w9nrz",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212771,
+  "history_end_time" : 1728932212771,
+  "history_notes" : null,
+  "history_process" : "9cqdos",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "u6v11u3sxcs",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212773,
+  "history_end_time" : 1728932212773,
+  "history_notes" : null,
+  "history_process" : "iq85px",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "t1aw8ldpg85",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212773,
+  "history_end_time" : 1728932212773,
+  "history_notes" : null,
+  "history_process" : "c8851t",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "vhnqtnfxqyq",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212773,
+  "history_end_time" : 1728932212773,
+  "history_notes" : null,
+  "history_process" : "s20a2d",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "ihd2d04p3qe",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212774,
+  "history_end_time" : 1728932212774,
+  "history_notes" : null,
+  "history_process" : "xnk7n1",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "9o5sfbawded",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212774,
+  "history_end_time" : 1728932212774,
+  "history_notes" : null,
+  "history_process" : "x4ch0z",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "m2vvfchi1gq",
+  "history_input" : "# import numpy as np\n# import pandas as pd\n# from sklearn.preprocessing import MinMaxScaler\n# from sklearn.model_selection import train_test_split\n# import joblib\n# import matplotlib.pyplot as plt\n\n# # Step 1: Load the dataset\n# file_path = '/Users/vishesh/Desktop/geo_project/data.csv'\n# data = pd.read_csv(file_path, skiprows=3)\n\n# # Step 2: Preprocess the data\n# data['Date'] = pd.to_datetime(data['Date'], format='%Y%m')\n# values = data['Value'].values\n\n# # Step 3: Normalize the data for LSTM\n# scaler = MinMaxScaler(feature_range=(0, 1))\n# scaled_data = scaler.fit_transform(values.reshape(-1, 1))\n\n# # Save the scaler for inverse transformation later\n# joblib.dump(scaler, 'scaler.pkl')\n\n# # Step 4: Create sequences for LSTM\n# def create_sequences(data, sequence_length):\n#     sequences = []\n#     targets = []\n#     for i in range(len(data) - sequence_length):\n#         seq = data[i:i + sequence_length]\n#         target = data[i + sequence_length]\n#         sequences.append(seq)\n#         targets.append(target)\n#     return np.array(sequences), np.array(targets)\n\n# sequence_length = 12  # 12 months\n# X, y = create_sequences(scaled_data, sequence_length)\n\n# # Step 5: Split into training and test sets\n# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)\n\n# # Reshape the data for LSTM\n# X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))\n# X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))\n\n# # Step 6: Save preprocessed data for later use\n# np.savez('preprocessed_data.npz', X_train=X_train, X_test=X_test, y_train=y_train, y_test=y_test)\n\n# print(\"Data preprocessing completed and saved!\")\n\n\n\n# plt.figure(figsize=(10,6))\n# plt.plot(data['Date'], data['Value'], label='Temperature Values')\n# plt.title('Temperature Values Over Time')\n# plt.xlabel('Date')\n# plt.ylabel('Temperature (Degrees Fahrenheit)')\n# plt.grid(True)\n# plt.legend()\n# plt.show()\n\n\n\n\nimport numpy as np\nimport pandas as pd\nfrom sklearn.preprocessing import MinMaxScaler\nfrom sklearn.model_selection import train_test_split\nimport joblib\nimport matplotlib.pyplot as plt\n\n# Step 1: Load the dataset\nfile_path = '/Users/vishesh/Desktop/geo_project/data.csv'\ndata = pd.read_csv(file_path, skiprows=3)\n\n# Step 2: Preprocess the data\ndata['Date'] = pd.to_datetime(data['Date'], format='%Y%m')\nvalues = data['Value'].values\n\n# Step 3: Normalize the data for LSTM\nscaler = MinMaxScaler(feature_range=(0, 1))\nscaled_data = scaler.fit_transform(values.reshape(-1, 1))\n\n# Save the scaler for inverse transformation later\njoblib.dump(scaler, 'scaler.pkl')\n\n# Step 4: Create sequences for LSTM\ndef create_sequences(data, sequence_length):\n    sequences = []\n    targets = []\n    for i in range(len(data) - sequence_length):\n        seq = data[i:i + sequence_length]\n        target = data[i + sequence_length]\n        sequences.append(seq)\n        targets.append(target)\n    return np.array(sequences), np.array(targets)\n\nsequence_length = 12  # 12 months\nX, y = create_sequences(scaled_data, sequence_length)\n\n# Step 5: Split into training and test sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)\n\n# Reshape the data for LSTM\nX_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))\nX_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))\n\n# Step 6: Save preprocessed data for later use, including dates\nnp.savez('preprocessed_data.npz', \n         X_train=X_train, \n         X_test=X_test, \n         y_train=y_train, \n         y_test=y_test, \n         dates=data['Date'].values[sequence_length:])  # Ensure dates align with the created sequences\n\nprint(\"Data preprocessing completed and saved!\")\n\n# Plotting the original data\nplt.figure(figsize=(10, 6))\nplt.plot(data['Date'], data['Value'], label='Temperature Values')\nplt.title('Temperature Values Over Time')\nplt.xlabel('Date')\nplt.ylabel('Temperature (Degrees Fahrenheit)')\nplt.grid(True)\nplt.legend()\nplt.show()\n",
+  "history_output" : "Data preprocessing completed and saved!\n2024-10-14 14:56:55.706 python[26492:929150] +[IMKClient subclass]: chose IMKClient_Legacy\n2024-10-14 14:56:55.706 python[26492:929150] +[IMKInputSession subclass]: chose IMKInputSession_Legacy\n",
+  "history_begin_time" : 1728932213710,
+  "history_end_time" : 1728932218612,
+  "history_notes" : null,
+  "history_process" : "keghqi",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "39keg0p7ku8",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212779,
+  "history_end_time" : 1728932212779,
+  "history_notes" : null,
+  "history_process" : "fhhx69",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "hta5yurdtwd",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212779,
+  "history_end_time" : 1728932212779,
+  "history_notes" : null,
+  "history_process" : "rfwos9",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "mw9ydyke92k",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212781,
+  "history_end_time" : 1728932212781,
+  "history_notes" : null,
+  "history_process" : "vnrvoi",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "axfiwki5z54",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212781,
+  "history_end_time" : 1728932212781,
+  "history_notes" : null,
+  "history_process" : "0lsb3i",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "95znz4kaem3",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212781,
+  "history_end_time" : 1728932212781,
+  "history_notes" : null,
+  "history_process" : "yqiqdt",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "3rb3be6xtdo",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212781,
+  "history_end_time" : 1728932212781,
+  "history_notes" : null,
+  "history_process" : "y30gbw",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "mp99zq04dab",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212782,
+  "history_end_time" : 1728932212782,
+  "history_notes" : null,
+  "history_process" : "7ev3w3",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "tm9g21515b5",
+  "history_input" : "No code saved",
+  "history_output" : "Skipped",
+  "history_begin_time" : 1728932212782,
+  "history_end_time" : 1728932212782,
+  "history_notes" : null,
+  "history_process" : "tz54ub",
+  "host_id" : "100001",
+  "indicator" : "Skipped"
+},{
+  "history_id" : "6bypfdzcx6c",
+  "history_input" : "import numpy as np\nimport tensorflow as tf\nfrom tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import LSTM, Dense, Dropout\nfrom tensorflow.keras.callbacks import EarlyStopping\nfrom tensorflow.keras.regularizers import l2\nimport joblib\n\n# Load the preprocessed data\ndata = np.load('/Users/vishesh/gw-workspace/L6gDfkNJofh8/preprocessed_data.npz')\nX_train, X_test, y_train, y_test = data['X_train'], data['X_test'], data['y_train'], data['y_test']\n\n# Build the LSTM model\nmodel = Sequential()\nmodel.add(LSTM(units=50, return_sequences=True, input_shape=(X_train.shape[1], 1), kernel_regularizer=l2(0.001)))\nmodel.add(Dropout(0.2))\nmodel.add(LSTM(units=50, return_sequences=False, kernel_regularizer=l2(0.001)))\nmodel.add(Dropout(0.3))\nmodel.add(Dense(units=1))\n\n# Compile the model with reduced learning rate\noptimizer = tf.keras.optimizers.Adam(learning_rate=0.0003)\nmodel.compile(optimizer=optimizer, loss='mean_squared_error')\n\n# Early stopping\nearly_stopping = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)\n\n# Train the model\nhistory = model.fit(X_train, y_train, epochs=50, batch_size=32, validation_data=(X_test, y_test), callbacks=[early_stopping])\n\n# Save the model and the training history\nmodel.save('lstm_model.h5')\nnp.save('training_history.npy', history.history)\n\n# Making future predictions for next week (7 days)\ndef predict_next_week(model, input_sequence, num_days=7):\n    predictions = []\n    current_input = input_sequence\n\n    for day in range(num_days):\n        pred = model.predict(current_input)\n        predictions.append(pred[0])\n        # Update input with the prediction (reshape pred to match current_input shape)\n        pred = np.reshape(pred, (1, 1, 1))  # Reshape to (1, 1, 1) to match LSTM input format\n        current_input = np.append(current_input[:, 1:, :], pred, axis=1)\n\n    return np.array(predictions)\n\n# Take the last sequence from the test data as the input for future predictions\nlast_sequence = X_test[-1].reshape(1, X_test.shape[1], 1)\n\n# Predict for the next 7 days\nnext_week_predictions = predict_next_week(model, last_sequence)\n\n# Save predictions for the next week\nnp.save('next_week_predictions.npy', next_week_predictions)\n",
+  "history_output" : "/opt/anaconda3/lib/python3.11/site-packages/keras/src/layers/rnn/rnn.py:204: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.\n  super().__init__(**kwargs)\nEpoch 1/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m34s\u001B[0m 907ms/step - loss: 0.2512\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m13/39\u001B[0m \u001B[32m━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.2016   \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m27/39\u001B[0m \u001B[32m━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.1774\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m1s\u001B[0m 8ms/step - loss: 0.1617 - val_loss: 0.0857\nEpoch 2/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 12ms/step - loss: 0.0759\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m15/39\u001B[0m \u001B[32m━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0800 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m30/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0794\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0789 - val_loss: 0.0840\nEpoch 3/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 12ms/step - loss: 0.0697\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0711 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0700\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0693 - val_loss: 0.0689\nEpoch 4/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0618\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0617 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0608\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0601 - val_loss: 0.0666\nEpoch 5/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0506\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0506 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0504\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0502 - val_loss: 0.0605\nEpoch 6/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 12ms/step - loss: 0.0493\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0456 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0449\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0447 - val_loss: 0.0540\nEpoch 7/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 12ms/step - loss: 0.0378\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0407 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0402\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0399 - val_loss: 0.0456\nEpoch 8/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0334\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0345 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m23/39\u001B[0m \u001B[32m━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 5ms/step - loss: 0.0344\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m36/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━\u001B[0m \u001B[1m0s\u001B[0m 5ms/step - loss: 0.0344\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 5ms/step - loss: 0.0344 - val_loss: 0.0464\nEpoch 9/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 13ms/step - loss: 0.0378\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m15/39\u001B[0m \u001B[32m━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0332 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m30/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0329\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0324 - val_loss: 0.0388\nEpoch 10/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 12ms/step - loss: 0.0301\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m15/39\u001B[0m \u001B[32m━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0283 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m30/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0279\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0278 - val_loss: 0.0336\nEpoch 11/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0252\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0252 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0254\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0254 - val_loss: 0.0356\nEpoch 12/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 12ms/step - loss: 0.0221\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0253 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0247\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0245 - val_loss: 0.0290\nEpoch 13/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0189\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0219 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0219\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0218 - val_loss: 0.0258\nEpoch 14/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0174\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0196 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0196\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0196 - val_loss: 0.0323\nEpoch 15/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0166\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0197 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0194\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0192 - val_loss: 0.0195\nEpoch 16/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0204\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0183 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0179\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0178 - val_loss: 0.0239\nEpoch 17/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 12ms/step - loss: 0.0141\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m15/39\u001B[0m \u001B[32m━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0167 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m30/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0166\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0165 - val_loss: 0.0205\nEpoch 18/50\n\u001B[1m 1/39\u001B[0m \u001B[37m━━━━━━━━━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 11ms/step - loss: 0.0159\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m16/39\u001B[0m \u001B[32m━━━━━━━━\u001B[0m\u001B[37m━━━━━━━━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0157 \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m31/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━\u001B[0m\u001B[37m━━━━━\u001B[0m \u001B[1m0s\u001B[0m 3ms/step - loss: 0.0154\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m39/39\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 4ms/step - loss: 0.0154 - val_loss: 0.0319\nWARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. \n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 86ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 86ms/step\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\n\u001B[1m1/1\u001B[0m \u001B[32m━━━━━━━━━━━━━━━━━━━━\u001B[0m\u001B[37m\u001B[0m \u001B[1m0s\u001B[0m 8ms/step\n",
+  "history_begin_time" : 1728932219691,
+  "history_end_time" : 1728932227263,
+  "history_notes" : null,
+  "history_process" : "sbyj29",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "d8vwe765ze8",
+  "history_input" : "import joblib\nimport numpy as np\n\n# Load the scaler for inverse transformation\nscaler = joblib.load('/Users/vishesh/gw-workspace/f7bNu3SQ6blN/scaler.pkl')\n\n# Load the predictions for the next week\nnext_week_predictions = np.load('/Users/vishesh/gw-workspace/8ZZWYYcx2NtS/next_week_predictions.npy')\n\n# Inverse scale the predictions for the next week\npredicted_next_week_temp = scaler.inverse_transform(next_week_predictions)\n\n# Define thresholds for severe weather\nheat_wave_threshold = 53  # Example: temperatures above 95°F indicate a heat wave\ncold_wave_threshold = 32  # Example: temperatures below 32°F indicate a cold spell\n\n# Flag severe weather conditions\ndef flag_severe_weather(predictions, heat_wave_thresh, cold_wave_thresh):\n    severe_weather_flags = []\n    for temp in predictions:\n        if temp > heat_wave_thresh:\n            severe_weather_flags.append('Heat Wave')\n        elif temp < cold_wave_thresh:\n            severe_weather_flags.append('Cold Spell')\n        else:\n            severe_weather_flags.append('Normal')\n    return severe_weather_flags\n\n# Flag the predictions\nsevere_weather_flags = flag_severe_weather(predicted_next_week_temp, heat_wave_threshold, cold_wave_threshold)\n\n# Display the results\nfor day, temp in enumerate(predicted_next_week_temp, 1):\n    print(f\"Day {day}: Predicted Temp = {temp[0]:.2f}°F, Condition = {severe_weather_flags[day-1]}\")\n\n",
+  "history_output" : "Day 1: Predicted Temp = 53.18°F, Condition = Heat Wave\nDay 2: Predicted Temp = 53.11°F, Condition = Heat Wave\nDay 3: Predicted Temp = 53.05°F, Condition = Heat Wave\nDay 4: Predicted Temp = 52.99°F, Condition = Normal\nDay 5: Predicted Temp = 52.87°F, Condition = Normal\nDay 6: Predicted Temp = 52.76°F, Condition = Normal\nDay 7: Predicted Temp = 52.65°F, Condition = Normal\n",
+  "history_begin_time" : 1728932228160,
+  "history_end_time" : 1728932228816,
+  "history_notes" : null,
+  "history_process" : "8erq0q",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "a3eaej25em4",
+  "history_input" : "import matplotlib.pyplot as plt\nimport numpy as np\nimport joblib\nimport pandas as pd\n\n# Step 1: Load the original dataset to get the dates\nfile_path = '/Users/vishesh/Desktop/geo_project/data.csv'\ndata = pd.read_csv(file_path, skiprows=3)\n\n# Convert the 'Date' column to datetime format\ndata['Date'] = pd.to_datetime(data['Date'], format='%Y%m')\n\n# Step 2: Load predictions for the next week\nnext_week_predictions = np.load('/Users/vishesh/gw-workspace/8ZZWYYcx2NtS/next_week_predictions.npy')\n\n# Step 3: Load the scaler for inverse transformation\nscaler = joblib.load('/Users/vishesh/gw-workspace/f7bNu3SQ6blN/scaler.pkl')\n\n# Step 4: Inverse scale the next week's predicted values\npredicted_next_week_temp = scaler.inverse_transform(next_week_predictions)\n\n# Step 5: Generate dates for the next 7 days based on the last date in the dataset\nlast_date = data['Date'].iloc[-1]\nnext_week_dates = pd.date_range(start=last_date, periods=7 + 1, inclusive='right')\n\n# Step 6: Plot the predicted values\nplt.figure(figsize=(10, 6))\nplt.plot(next_week_dates, predicted_next_week_temp, color='red', label='Predicted Temperatures')\n\n# Customize the plot\nplt.title('Predicted Temperature for the Next Week')\nplt.xlabel('Date')\nplt.ylabel('Temperature (Degrees Fahrenheit)')\nplt.grid(True)\nplt.xticks(rotation=45)\nplt.legend()\nplt.tight_layout()\n\n# Show the plot\nplt.show()\n\n",
+  "history_output" : "2024-10-14 14:57:11.081 python[26532:930449] +[IMKClient subclass]: chose IMKClient_Legacy\n2024-10-14 14:57:11.081 python[26532:930449] +[IMKInputSession subclass]: chose IMKInputSession_Legacy\n",
+  "history_begin_time" : 1728932229776,
+  "history_end_time" : 1728932237210,
+  "history_notes" : null,
+  "history_process" : "4601j3",
+  "host_id" : "100001",
+  "indicator" : "Done"
+}]

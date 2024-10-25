@@ -1,32 +1,18 @@
-![Workflow Badge](https://img.shields.io/badge/Workflow-Climate analysis - Temperature and Precipitation-blue.svg)
+![Workflow Badge](https://img.shields.io/badge/Workflow-Heat Waves-blue.svg)
 
-# Workflow Name: Climate analysis - Temperature and Precipitation
+# Workflow Name: Heat Waves
 
 ## Description
-Climate analysis - Temperature and Precipitation
+Detecting Heatwaves
 
 ## Processes
-data_acquisition, data_preprocessing, trend_analysis, ml_model, anomaly_detection, visualization, load_temp, low_precipitation, evaluate_model, auto_ml, eda, hyperparameter_tuning, residual_analysis, model_eval, heat_waves, lstm_temp, flagging_severe_weather, Heat_wave_vis
+Heat_wave_vis, flagging_severe_weather, lstm_temp, load_temp
 
 ### Process Descriptions
-data_acquisition: python
-data_preprocessing: null
-trend_analysis: null
-ml_model: null
-anomaly_detection: null
-visualization: null
-load_temp: null
-low_precipitation: null
-evaluate_model: null
-auto_ml: null
-eda: null
-hyperparameter_tuning: null
-residual_analysis: python
-model_eval: null
-heat_waves: null
-lstm_temp: null
-flagging_severe_weather: null
 Heat_wave_vis: null
+flagging_severe_weather: null
+lstm_temp: null
+load_temp: null
 
 
 ## Steps to use the workflow

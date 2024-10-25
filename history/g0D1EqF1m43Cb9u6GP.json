@@ -1,0 +1,41 @@
+[{
+  "history_id" : "bl6feqoozml",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1729815526574,
+  "history_notes" : null,
+  "history_process" : "4601j3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "sdl15gq1y2y",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1729815526571,
+  "history_notes" : null,
+  "history_process" : "8erq0q",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6qpaj2knp5c",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1729815526566,
+  "history_notes" : null,
+  "history_process" : "sbyj29",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "gsoyk5y9snp",
+  "history_input" : null,
+  "history_output" : "Authentication Failed. Wrong Password.",
+  "history_begin_time" : 1729815526196,
+  "history_end_time" : 1729815526578,
+  "history_notes" : null,
+  "history_process" : "keghqi",
+  "host_id" : "100001",
+  "indicator" : "Failed"
+}]
